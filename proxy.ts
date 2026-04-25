@@ -11,6 +11,11 @@ import { updateSession } from '@/lib/supabase/middleware';
  * the matcher and delegates.
  */
 export async function proxy(request: NextRequest): Promise<NextResponse> {
+  // Skip auth/session work when Supabase env vars are not configured
+  // (e.g. quick preview deployments) — just let every request through.
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return NextResponse.next({ request: { headers: request.headers } });
+  }
   return updateSession(request);
 }
 

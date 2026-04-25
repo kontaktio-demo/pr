@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CheckIcon, WarningIcon, ArrowRightIcon } from '@/components/ui/icons';
 
 /**
  * Sekcja szybkiej rezerwacji — mini-kreator (data → godzina → liczba osób).
@@ -37,10 +38,17 @@ export function QuickBookingSection() {
               Wpisz datę, godzinę i liczbę osób, a my pokażemy Ci wolne sloty.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-white/85">
-              <li>✓ Płatność BLIK / karta / Apple Pay / Google Pay</li>
-              <li>✓ Bezpłatne anulowanie do 24h przed sesją</li>
-              <li>✓ Faktura VAT po podaniu NIP-u</li>
-              <li>✓ Skarpetki antypoślizgowe dostępne na miejscu (10 zł)</li>
+              {[
+                'Płatność BLIK / karta / Apple Pay / Google Pay',
+                'Bezpłatne anulowanie do 24h przed sesją',
+                'Faktura VAT po podaniu NIP-u',
+                'Skarpetki antypoślizgowe dostępne na miejscu (10 zł)',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <CheckIcon className="mt-0.5 h-4 w-4 flex-shrink-0 text-white" />
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -96,9 +104,10 @@ export function QuickBookingSection() {
 
               <button
                 type="submit"
-                className="mt-2 rounded-full bg-brand px-6 py-4 text-base font-bold uppercase tracking-wide text-white shadow-md transition hover:bg-brand-dark"
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-4 text-base font-bold uppercase tracking-wide text-white shadow-md transition hover:bg-brand-dark"
               >
-                Sprawdź dostępność →
+                Sprawdź dostępność
+                <ArrowRightIcon className="h-4 w-4" />
               </button>
 
               <p className="text-center text-xs text-ink/60">
@@ -108,13 +117,17 @@ export function QuickBookingSection() {
           </form>
         </div>
 
-        <div className="mt-10 rounded-2xl bg-white/15 p-4 text-center text-sm backdrop-blur-sm">
-          ⚠️ <strong>Pamiętaj:</strong> przyjdź 15 minut przed sesją na rejestrację
-          i obowiązkową rozgrzewkę. Wejścia tylko o pełnych godzinach.
-          {' '}
-          <Link href="/regulamin-rezerwacji" className="underline hover:no-underline">
-            Zobacz pełen regulamin rezerwacji →
-          </Link>
+        <div className="mt-10 flex items-start gap-3 rounded-2xl bg-white/15 p-4 text-sm backdrop-blur-sm">
+          <WarningIcon className="mt-0.5 h-5 w-5 flex-shrink-0 text-white" />
+          <p>
+            <strong>Pamiętaj:</strong> przyjdź 15 minut przed sesją na rejestrację
+            i obowiązkową rozgrzewkę. Wejścia tylko o pełnych godzinach.
+            {' '}
+            <Link href="/regulamin-rezerwacji" className="inline-flex items-center gap-1 underline hover:no-underline">
+              Zobacz pełen regulamin rezerwacji
+              <ArrowRightIcon className="h-3.5 w-3.5" />
+            </Link>
+          </p>
         </div>
       </div>
     </section>

@@ -27,8 +27,12 @@ function HeroFallback() {
       className="absolute inset-0 flex items-center justify-center"
     >
       <div className="relative h-72 w-72 md:h-96 md:w-96">
+        {/* Soft glow */}
         <span className="absolute inset-0 animate-pulse rounded-full bg-gradient-to-br from-white/30 via-accent/30 to-teal/30 blur-2xl" />
-        <span className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/20 backdrop-blur-sm md:h-56 md:w-56" />
+        {/* Trampoline mat (ellipse) */}
+        <span className="absolute left-1/2 bottom-[28%] h-6 w-3/4 -translate-x-1/2 rounded-[50%] bg-ink/70 ring-4 ring-brand/80 md:h-8" />
+        {/* Bouncing ball */}
+        <span className="absolute left-1/2 bottom-[34%] h-16 w-16 -translate-x-1/2 animate-[bounce_1s_ease-in-out_infinite] rounded-full bg-brand shadow-lg md:h-20 md:w-20" />
       </div>
     </div>
   );

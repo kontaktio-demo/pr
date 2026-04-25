@@ -71,9 +71,13 @@ export function ParkZonesSection() {
             const Icon = zoneIcons[zone.slug];
             const cfg = layout[idx] ?? layout[0];
             return (
-              <FadeIn key={zone.slug} delay={idx * 0.08}>
+              <FadeIn
+                key={zone.slug}
+                delay={idx * 0.08}
+                className={`${cfg.col} ${cfg.mt}`}
+              >
                 <article
-                  className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-sm transition duration-500 hover:-translate-y-2 hover:rotate-0 hover:shadow-2xl ${cfg.col} ${cfg.mt} ${cfg.tilt}`}
+                  className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-sm transition duration-500 hover:-translate-y-2 hover:rotate-0 hover:shadow-2xl ${cfg.tilt}`}
                 >
                   <div
                     className={`relative flex h-36 items-center justify-between overflow-hidden px-8 ${colorMap[zone.color]}`}

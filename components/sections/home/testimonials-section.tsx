@@ -23,6 +23,13 @@ const testimonials = [
   },
 ];
 
+/** Tilt + vertical offset per testimonial card; cycles via modulo. */
+const testimonialOffsets = [
+  'md:mt-0 md:-rotate-1',
+  'md:mt-10 md:rotate-1',
+  'md:mt-2 md:-rotate-1',
+];
+
 /**
  * Sekcja opinii — proste karty (na MVP). W przyszłości można podpiąć
  * Google Reviews API lub feed z Supabase.
@@ -65,11 +72,11 @@ export function TestimonialsSection() {
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {testimonials.map((t, idx) => {
-            const offsets = ['md:mt-0 md:-rotate-1', 'md:mt-10 md:rotate-1', 'md:mt-2 md:-rotate-1'];
+            const offset = testimonialOffsets[idx % testimonialOffsets.length];
             return (
               <FadeIn key={t.name} delay={idx * 0.1}>
                 <figure
-                  className={`group relative h-full rounded-3xl border border-ink/10 bg-white p-6 shadow-sm transition duration-500 hover:-translate-y-2 hover:rotate-0 hover:shadow-2xl ${offsets[idx]}`}
+                  className={`group relative h-full rounded-3xl border border-ink/10 bg-white p-6 shadow-sm transition duration-500 hover:-translate-y-2 hover:rotate-0 hover:shadow-2xl ${offset}`}
                 >
                   <span
                     aria-hidden="true"

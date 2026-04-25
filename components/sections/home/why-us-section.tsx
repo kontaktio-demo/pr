@@ -88,7 +88,7 @@ export function WhyUsSection() {
           {values.map((v, idx) => (
             <FadeIn key={v.title} delay={idx * 0.08}>
               <div
-                className={`group relative h-full overflow-hidden rounded-3xl bg-ink-light/40 p-6 backdrop-blur-sm transition duration-500 hover:-translate-y-2 hover:bg-ink-light/60 ${cardOffsets[idx]}`}
+                className={`group relative h-full overflow-hidden rounded-3xl bg-ink-light/40 p-6 backdrop-blur-sm transition duration-500 hover:-translate-y-2 hover:bg-ink-light/60 ${cardOffsets[idx % cardOffsets.length]}`}
               >
                 <span
                   aria-hidden="true"

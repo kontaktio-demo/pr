@@ -9,22 +9,22 @@
   --font-display: 'Space Grotesk', system-ui, sans-serif;
 
   /* Brand — pomarańcz (główne tło, energia, ruch) */
-  --color-brand-DEFAULT: #f39200;
+  --color-brand: #f39200;
   --color-brand-dark: #d97e00;
   --color-brand-light: #ffb13d;
 
   /* Ink — granat (pasek kontaktowy, footer, panel admina) */
-  --color-ink-DEFAULT: #1e2a5c;
+  --color-ink: #1e2a5c;
   --color-ink-muted: #141b40;
   --color-ink-light: #2c3a75;
 
   /* Accent — zieleń z logo */
-  --color-accent-DEFAULT: #2fa84f;
+  --color-accent: #2fa84f;
   --color-accent-dark: #1f8038;
   --color-accent-light: #5cc176;
 
   /* Teal — turkus z logo */
-  --color-teal-DEFAULT: #1fa9a8;
+  --color-teal: #1fa9a8;
   --color-teal-dark: #16807f;
   --color-teal-light: #4fc2c1;
 
@@ -54,7 +54,7 @@
   }
 
   ::selection {
-    background-color: var(--color-ink-DEFAULT);
+    background-color: var(--color-ink);
     color: white;
   }
 }

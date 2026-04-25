@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CheckIcon, WarningIcon } from '@/components/ui/icons';
 
 /**
  * Sekcja szybkiej rezerwacji — mini-kreator (data → godzina → liczba osób).
@@ -37,10 +38,17 @@ export function QuickBookingSection() {
               Wpisz datę, godzinę i liczbę osób, a my pokażemy Ci wolne sloty.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-white/85">
-              <li>✓ Płatność BLIK / karta / Apple Pay / Google Pay</li>
-              <li>✓ Bezpłatne anulowanie do 24h przed sesją</li>
-              <li>✓ Faktura VAT po podaniu NIP-u</li>
-              <li>✓ Skarpetki antypoślizgowe dostępne na miejscu (10 zł)</li>
+              {[
+                'Płatność BLIK / karta / Apple Pay / Google Pay',
+                'Bezpłatne anulowanie do 24h przed sesją',
+                'Faktura VAT po podaniu NIP-u',
+                'Skarpetki antypoślizgowe dostępne na miejscu (10 zł)',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <CheckIcon className="mt-0.5 h-4 w-4 flex-shrink-0 text-white" />
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -108,13 +116,16 @@ export function QuickBookingSection() {
           </form>
         </div>
 
-        <div className="mt-10 rounded-2xl bg-white/15 p-4 text-center text-sm backdrop-blur-sm">
-          ⚠️ <strong>Pamiętaj:</strong> przyjdź 15 minut przed sesją na rejestrację
-          i obowiązkową rozgrzewkę. Wejścia tylko o pełnych godzinach.
-          {' '}
-          <Link href="/regulamin-rezerwacji" className="underline hover:no-underline">
-            Zobacz pełen regulamin rezerwacji →
-          </Link>
+        <div className="mt-10 flex items-start gap-3 rounded-2xl bg-white/15 p-4 text-sm backdrop-blur-sm">
+          <WarningIcon className="mt-0.5 h-5 w-5 flex-shrink-0 text-white" />
+          <p>
+            <strong>Pamiętaj:</strong> przyjdź 15 minut przed sesją na rejestrację
+            i obowiązkową rozgrzewkę. Wejścia tylko o pełnych godzinach.
+            {' '}
+            <Link href="/regulamin-rezerwacji" className="underline hover:no-underline">
+              Zobacz pełen regulamin rezerwacji →
+            </Link>
+          </p>
         </div>
       </div>
     </section>

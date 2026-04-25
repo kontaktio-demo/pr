@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { pricing, formatPriceGrosze } from '@/content/pricing';
+import { ScrollReveal } from '@/components/animations/scroll-reveal';
+import { FadeIn } from '@/components/animations/fade-in';
 
 /**
  * Sekcja "Mini cennik" — 3 najpopularniejsze opcje
@@ -16,32 +18,34 @@ export function PricingTeaserSection() {
       className="bg-white py-20 md:py-28"
     >
       <div className="container">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-bold uppercase tracking-widest text-brand">
-            Cennik
-          </p>
-          <h2
-            id="pricing-title"
-            className="mt-2 font-display text-4xl font-extrabold text-ink md:text-5xl"
-          >
-            Najpopularniejsze opcje
-          </h2>
-          <p className="mt-4 text-lg text-ink/70">
-            Wybierz wariant najlepszy dla Ciebie. Pełen cennik, karnety i
-            pakiety urodzinowe znajdziesz na stronie cennika.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-bold uppercase tracking-widest text-brand">
+              Cennik
+            </p>
+            <h2
+              id="pricing-title"
+              className="mt-2 font-display text-4xl font-extrabold text-ink md:text-5xl"
+            >
+              Najpopularniejsze opcje
+            </h2>
+            <p className="mt-4 text-lg text-ink/70">
+              Wybierz wariant najlepszy dla Ciebie. Pełen cennik, karnety i
+              pakiety urodzinowe znajdziesz na stronie cennika.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {featured.map((item, idx) => (
-            <article
-              key={item.id}
-              className={`relative flex flex-col rounded-3xl border-2 p-8 transition hover:-translate-y-1 hover:shadow-xl ${
-                idx === 1
-                  ? 'border-brand bg-brand text-white shadow-lg'
-                  : 'border-ink/10 bg-white text-ink'
-              }`}
-            >
+            <FadeIn key={item.id} delay={idx * 0.1}>
+              <article
+                className={`relative flex h-full flex-col rounded-3xl border-2 p-8 transition hover:-translate-y-1 hover:shadow-xl ${
+                  idx === 1
+                    ? 'border-brand bg-brand text-white shadow-lg'
+                    : 'border-ink/10 bg-white text-ink'
+                }`}
+              >
               {idx === 1 && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-ink px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
                   Najpopularniejsze
@@ -73,7 +77,8 @@ export function PricingTeaserSection() {
               >
                 Kup online
               </Link>
-            </article>
+              </article>
+            </FadeIn>
           ))}
         </div>
 

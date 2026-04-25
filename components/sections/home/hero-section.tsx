@@ -75,12 +75,12 @@ export function HeroSection() {
               />
               <polygon
                 points="100,10 180,55 180,145"
-                fill="var(--color-accent-DEFAULT)"
+                fill="var(--color-accent)"
                 opacity="0.85"
               />
               <polygon
                 points="100,10 20,55 20,145"
-                fill="var(--color-teal-DEFAULT)"
+                fill="var(--color-teal)"
                 opacity="0.85"
               />
               <polygon
@@ -95,7 +95,7 @@ export function HeroSection() {
                 className="font-display"
                 fontSize="32"
                 fontWeight="800"
-                fill="var(--color-brand-DEFAULT)"
+                fill="var(--color-brand)"
               >
                 SALTOS
               </text>

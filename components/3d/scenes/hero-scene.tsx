@@ -1,6 +1,6 @@
 'use client';
 
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, Float, MeshDistortMaterial, Sparkles } from '@react-three/drei';
 import { Suspense, useRef } from 'react';
 import type { Group, Mesh } from 'three';
@@ -8,17 +8,39 @@ import type { Group, Mesh } from 'three';
 /**
  * Hero 3D scene — premium playful composition for the landing page.
  *
- * - Three floating primitives (torus, sphere, icosahedron) keyed to brand
- *   colors, with `Float` for organic idle motion.
+ * - Three floating primitives (icosahedron, torus, octahedron) keyed to the
+ *   brand palette (`--color-brand` #F39200, `--color-teal` #1FA9A8,
+ *   `--color-accent` #2FA84F). Hex literals are duplicated here because
+ *   three.js materials cannot resolve CSS variables at runtime.
  * - Soft studio environment + key/rim lights for a premium look.
- * - Distortion material on the centerpiece sphere reacts to time, giving the
- *   "blob in a snow globe" feel.
+ * - Distortion material on the centerpiece sphere reacts to time, giving
+ *   the "blob in a snow globe" feel.
  * - `Sparkles` add subtle particle motion in the background.
+ * - `CameraRig` tilts the camera toward the cursor (smoothed via lerp) for
+ *   subtle parallax. Clamped + lerped so it never feels jittery.
  *
  * The scene is mounted via `next/dynamic({ ssr: false })` from
  * `components/3d/hero-visual.tsx`, so it never runs on the server, never
  * blocks LCP, and is skipped entirely on small screens / reduced-motion.
  */
+
+function CameraRig() {
+  const { camera, pointer } = useThree();
+  useFrame(() => {
+    // pointer is normalized to [-1, 1]; small offsets feel premium, big ones cheap.
+    // R3F encourages direct mutation inside useFrame for per-frame updates;
+    // the immutability lint rule does not apply here.
+    const targetX = pointer.x * 0.6;
+    const targetY = 0.4 + pointer.y * 0.3;
+    /* eslint-disable react-hooks/immutability */
+    camera.position.x += (targetX - camera.position.x) * 0.05;
+    camera.position.y += (targetY - camera.position.y) * 0.05;
+    camera.lookAt(0, 0, 0);
+    /* eslint-enable react-hooks/immutability */
+  });
+  return null;
+}
+
 function SpinningGroup({ children }: { children: React.ReactNode }) {
   const group = useRef<Group>(null);
   useFrame((_, delta) => {
@@ -101,6 +123,7 @@ export function HeroScene() {
         />
 
         <Environment preset="city" />
+        <CameraRig />
       </Suspense>
     </Canvas>
   );

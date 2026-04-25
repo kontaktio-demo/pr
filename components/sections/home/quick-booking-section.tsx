@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CheckIcon, WarningIcon } from '@/components/ui/icons';
+import { CheckIcon, WarningIcon, ArrowRightIcon } from '@/components/ui/icons';
 
 /**
  * Sekcja szybkiej rezerwacji — mini-kreator (data → godzina → liczba osób).
@@ -104,9 +104,10 @@ export function QuickBookingSection() {
 
               <button
                 type="submit"
-                className="mt-2 rounded-full bg-brand px-6 py-4 text-base font-bold uppercase tracking-wide text-white shadow-md transition hover:bg-brand-dark"
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-4 text-base font-bold uppercase tracking-wide text-white shadow-md transition hover:bg-brand-dark"
               >
-                Sprawdź dostępność →
+                Sprawdź dostępność
+                <ArrowRightIcon className="h-4 w-4" />
               </button>
 
               <p className="text-center text-xs text-ink/60">
@@ -122,8 +123,9 @@ export function QuickBookingSection() {
             <strong>Pamiętaj:</strong> przyjdź 15 minut przed sesją na rejestrację
             i obowiązkową rozgrzewkę. Wejścia tylko o pełnych godzinach.
             {' '}
-            <Link href="/regulamin-rezerwacji" className="underline hover:no-underline">
-              Zobacz pełen regulamin rezerwacji →
+            <Link href="/regulamin-rezerwacji" className="inline-flex items-center gap-1 underline hover:no-underline">
+              Zobacz pełen regulamin rezerwacji
+              <ArrowRightIcon className="h-3.5 w-3.5" />
             </Link>
           </p>
         </div>

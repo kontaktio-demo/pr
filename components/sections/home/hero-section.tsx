@@ -8,6 +8,26 @@ import { MagneticButton } from '@/components/animations/magnetic-button';
 import { TextReveal } from '@/components/animations/text-reveal';
 import { ClockIcon } from '@/components/ui/icons';
 
+/** Position + color + start delay for each floating confetti dot. */
+type ConfettiDot = {
+  top?: string;
+  bottom?: string;
+  left?: string;
+  right?: string;
+  size: number;
+  color: string;
+  delay: number;
+};
+
+const confetti: ConfettiDot[] = [
+  { top: '15%', left: '10%', size: 12, color: 'bg-teal', delay: 0 },
+  { top: '20%', right: '15%', size: 8, color: 'bg-ink', delay: 0.4 },
+  { bottom: '15%', left: '20%', size: 10, color: 'bg-accent', delay: 0.8 },
+  { bottom: '10%', right: '10%', size: 12, color: 'bg-white', delay: 1.2 },
+  { top: '60%', right: '25%', size: 8, color: 'bg-teal', delay: 0.2 },
+  { top: '8%', left: '40%', size: 8, color: 'bg-accent', delay: 1 },
+];
+
 /**
  * Sekcja HERO strony głównej — duże pomarańczowe tło (jak na saltos.pl),
  * mocny nagłówek z reveal per word, dwa CTA z magnetic motion oraz
@@ -21,14 +41,7 @@ export function HeroSection() {
     >
       {/* Subtle confetti dots — animated with Framer Motion */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        {[
-          { top: '15%', left: '10%', size: 12, color: 'bg-teal', delay: 0 },
-          { top: '20%', right: '15%', size: 8, color: 'bg-ink', delay: 0.4 },
-          { bottom: '15%', left: '20%', size: 10, color: 'bg-accent', delay: 0.8 },
-          { bottom: '10%', right: '10%', size: 12, color: 'bg-white', delay: 1.2 },
-          { top: '60%', right: '25%', size: 8, color: 'bg-teal', delay: 0.2 },
-          { top: '8%', left: '40%', size: 8, color: 'bg-accent', delay: 1 },
-        ].map((d, i) => (
+        {confetti.map((d, i) => (
           <motion.span
             key={i}
             className={`absolute rounded-full ${d.color}`}
@@ -121,6 +134,25 @@ export function HeroSection() {
           <HeroVisual />
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.a
+        href="#strefy"
+        aria-label="Przewiń do stref parku"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/85 transition hover:text-white md:flex"
+      >
+        <span>Przewiń</span>
+        <motion.span
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-white/70 p-1.5"
+        >
+          <span className="block h-2 w-1 rounded-full bg-white" />
+        </motion.span>
+      </motion.a>
     </section>
   );
 }

@@ -175,6 +175,55 @@ export const ArrowRightIcon = (p: IconProps) => (
   </Svg>
 );
 
+export const MenuIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M4 7h16M4 12h16M4 17h16" />
+  </Svg>
+);
+
+export const CloseIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M6 6l12 12M18 6L6 18" />
+  </Svg>
+);
+
+/* ---------- Social ---------- */
+
+export const InstagramIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17" cy="7" r="0.9" fill="currentColor" stroke="none" />
+  </Svg>
+);
+
+export const FacebookIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M14 8h2.5V4.5H14a3.5 3.5 0 00-3.5 3.5v2.5H8V14h2.5v6h3.5v-6h2.5l.5-3.5H14V8z" />
+  </Svg>
+);
+
+export const TikTokIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M14 4v9.2a3.3 3.3 0 11-3.3-3.3" />
+    <path d="M14 4c.4 2.5 2.3 4.4 4.8 4.8" />
+  </Svg>
+);
+
+export const YouTubeIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <rect x="2.5" y="6" width="19" height="12" rx="3" />
+    <path d="M11 9.5l4 2.5-4 2.5z" fill="currentColor" stroke="none" />
+  </Svg>
+);
+
+export const socialIcons: Record<string, React.ComponentType<IconProps>> = {
+  instagram: InstagramIcon,
+  facebook: FacebookIcon,
+  tiktok: TikTokIcon,
+  youtube: YouTubeIcon,
+};
+
 /* ---------- Lookup for park zones by slug ---------- */
 
 export const zoneIcons: Record<string, React.ComponentType<IconProps>> = {

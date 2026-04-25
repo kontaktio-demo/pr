@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { pricing, formatPriceGrosze } from '@/content/pricing';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { FadeIn } from '@/components/animations/fade-in';
+import { ArrowRightIcon } from '@/components/ui/icons';
 
 /**
  * Sekcja "Mini cennik" — 3 najpopularniejsze opcje
@@ -87,7 +88,8 @@ export function PricingTeaserSection() {
             href="/cennik"
             className="inline-flex items-center gap-2 text-base font-bold text-brand hover:underline"
           >
-            Zobacz pełny cennik i karnety →
+            Zobacz pełny cennik i karnety
+            <ArrowRightIcon className="h-4 w-4" />
           </Link>
         </div>
       </div>
